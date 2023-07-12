@@ -41,7 +41,7 @@
 
 <body>
     <h1>Login</h1>
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+    <form action="" method="POST">
         <label>Username:</label>
         <input type="text" id="uname" name="uname" required>
         <br><br>
