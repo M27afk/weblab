@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        body {
+            padding: 10px;
+            margin: 10px;
+            /* text-align: center */
+        }
+
+        div {
+            background-color: rgba(128, 128, 128, 0.667);
+            padding: 10px;
+            width: 300px;
+        }
+
+        input[type="submit"] {
+            text-align: center;
+            margin-left: 100px;
+        }
+
+        label,
+        input {
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+    <script>
+        function validate() {
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let phone = document.getElementById('phone').value;
+            let gender = document.getElementById('gender').value;
+        //    alert(gender)
+            if(name.length===0){
+                alert("Enter name")
+                return
+            }
+            if (phone.length != 10) {
+                alert('Please enter correct mobile no');
+               return
+            }
+            if(gender==="select"){
+                alert("Enter Gender")
+                return
+            }
+
+
+            var output = 'Name: ' + name + '\n';
+            output += 'Email: ' + email + '\n';
+            output += 'Mobile No: ' + phone + '\n';
+            output += 'Gender: ' + gender + '\n';
+            let display = document.getElementById('result');
+            display.value = output;
+            return false;
+           
+        }   
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Form Validation</h1><br>
+        <form action="" onsubmit="return validate()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" /><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" /><br>
+            <label for="phone">Mobile No:</label>
+            <input type="tel" id="phone" /><br><br>
+            <label for="name">Gender:</label>
+            <select id="gender">
+                <option value="select" selected disabled>Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="others">Others</option>
+            </select><br><br>
+            <input type="submit" value="Submit" >
+        </form>
+    </div>
+    <div>
+        <textarea id="result" cols="30" rows="10" readonly></textarea>
+    </div>
+</body>
+
+</html>

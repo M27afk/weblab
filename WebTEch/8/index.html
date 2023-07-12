@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <script>
+        function validate() {
+            var regno = document.getElementById('regno').value;
+            var test1 = parseInt(document.getElementById('test1').value);
+            var test2 = parseInt(document.getElementById('test2').value);
+            var test3 = parseInt(document.getElementById('test3').value);
+            var regnoregex = /^\d{2}[A-Za-z]{3}\d{2}[A-Za-z]{2}\d{3}$/;
+
+            if (!regnoregex.test(regno)) {
+                alert('Give correct Regno.');
+                return;
+            }
+
+            if (!validateMarks(test1) || !validateMarks(test1) || !validateMarks(test1)) {
+                alert('Enter the marks(0-20)');
+                return;
+            }
+
+            var avg = (test1 + test2 + test3 - Math.min(test1, test2, test3)) / 2;
+            alert('Average = ' + avg.toFixed(2));
+        }
+        function validateMarks(marks) {
+            return !isNaN(marks) && marks >= 0 && marks <= 20;
+        }
+    </script>
+    <style>
+        body {
+            padding: 10px;
+            margin: 10px;
+        }
+
+        label,
+        input {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Form Validation</h1>
+        <form action="" onsubmit="return validate()">
+            <label for="regno" >Register Number:</label>
+            <input type="text" id="regno"/><br>
+            <label for="subcode">Subject Code:</label>
+            <input type="text" id="subcode" /><br>
+            <label for="test1">Test 1 marks:</label>
+            <input type="number" id="test1" /><br>
+            <label for="test2">Test 2 marks:</label>
+            <input type="number" id="test2" /><br>
+            <label for="test3">Test 3 marks:</label>
+            <input type="number" id="test3" /><br>
+            <input type="submit">
+        </form>
+    </div>
+</body>
+
+</html>
